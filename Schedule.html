@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html> 
+<head>
+    <title> Schedule  </title>
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+ <style>
+    body 
+        {
+        font-family: "Lato", sans-serif;
+        }
+      
+      .SideNav 
+      {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      
+      .SideNav a 
+      {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+      
+      .SideNav a:hover 
+      {
+        color: #f1f1f1;
+      }
+      
+      .SideNav .closebtn
+       {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      #main 
+      {
+        transition: margin-left .5s;
+        padding: 16px;
+      }
+      
+      @media screen and (max-height: 450px) 
+      {
+        .SideNav {padding-top: 15px;}
+        .SideNav a {font-size: 18px;}
+      }
+</style>
+</head>
+<body>
+ <nav>
+ <div class="nav-wrapper">
+ <a class= "brand-logo center">Schedule</a>
+</div>
+</nav>
+<ul></ul>
+
+<div id="SideBarNav" class="SideNav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
+    <a href="mainWindow.html">Main</a>
+    <a href="./scheduling/MyFirstSchedule.html"> Full Scheduling Calendar </a>
+    <a href="./calendar/Calendar.html"> Day Calendar</a>
+    <a href="./time-todo/renderer/index.html">Time Sorter</a>
+    </div>
+    
+    <div id="Schedule">
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    
+    <script>
+      const electron = require('electron');
+      const {ipcRenderer} = electron;
+      const ul = document.querySelector('ul');
+  
+      //add item 
+      ipcRenderer.on('item:add', function(e, item)
+      {
+        ul.className = 'collection';
+        const li = document.createElement('li');
+        const itemText = document.createTextNode(item);
+        li.className = 'collection-item';
+        li.appendChild(itemText);
+        ul.appendChild(li);
+      });
+      //clear items 
+      ipcRenderer.on('item:clear', function()
+      {
+        ul.innerHTML = '';
+        ul.className = '';
+      });
+      //remove items
+      ul.addEventListener('dblclick', removeItem);
+  
+      function removeItem(e)
+      {
+        e.target.remove();
+       if(ul.children.length == 0)
+        {
+          ul.className = '';
+        }
+      }
+    </script>
+<script>
+    function openNav() 
+    {
+    document.getElementById("SideBarNav").style.width = "250px";
+    document.getElementById("Schedule").style.marginLeft = "250px";
+    }
+    function closeNav() 
+    {
+    document.getElementById("SideBarNav").style.width = "0";
+    document.getElementById("Schedule").style.marginLeft= "0";
+      }
+</script>
+</body>
+</html>

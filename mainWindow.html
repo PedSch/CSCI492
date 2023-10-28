@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title> Main </title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<style>
+  
+  body 
+  {
+  font-family: "Lato", sans-serif;
+  }
+
+.SideNav 
+{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.SideNav a 
+{
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.SideNav a:hover 
+{
+  color: #f1f1f1;
+}
+
+.SideNav .closebtn
+ {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+#main 
+{
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) 
+{
+  .SideNav {padding-top: 15px;}
+  .SideNav a {font-size: 18px;}
+}
+
+.container 
+{  
+width: 200px;  
+height: 300px;  
+border: 2px solid rgb(189, 52, 52);  
+display: grid;  
+}  
+button 
+{  
+background-color: lightblue;  
+color: black;  
+font-size: 25px;  
+margin: auto;  
+}  
+p
+{  
+font-size: 25px;  
+}  
+
+</style>
+<!-- calendar icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+</div>
+
+<!-- logo -->
+<nav>
+<div class="nav-wrapper">
+<a class= "brand-logo center">Main Menu</a>
+</nav>
+</div>
+
+<!-- side bar nav -->
+<div id="SideBarNav" class="SideNav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
+<a href="Schedule.html">Schedule Adjustments</a>
+<a href="./scheduling/MyFirstSchedule.html"> Full Scheduling Calendar </a>
+<a href="./calendar/Calendar.html"> Day Calendar</a>
+<a href="./time-todo/renderer/index.html">Time Sorter</a>
+</div>
+
+<!-- main menu sign  -->
+<div id="main">
+<p> Welcome to Digital Signage </p>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Sections</span>
+</div>
+
+<!-- calendar sign  -->
+<div class="container">  
+<p>Calendar:</p>
+<button style=" font-size:24px" onclick="window.location.href='./calendar/Calendar.html';"> <i class=" fa fa-calendar" style="font-size:180px;color:rgb(189, 89, 89)"></i>
+</button>
+</div>
+
+<!-- calendar sign  -->
+
+<script>
+const electron = require('electron');
+function openNav() 
+{
+document.getElementById("SideBarNav").style.width = "250px";
+document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() 
+{
+document.getElementById("SideBarNav").style.width = "0";
+document.getElementById("main").style.marginLeft= "0";
+  }
+</script>
+
+</body>
+</html>
