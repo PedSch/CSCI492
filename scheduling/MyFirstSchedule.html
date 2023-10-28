@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Scheduler</title>
+ <!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<link href="themes/peach.css" rel="stylesheet" />
+</head>
+<!-- sidebar navigation components -->
+<style>
+    body 
+    {
+    font-family: "Lato", sans-serif;
+    }
+  
+  .SideNav 
+  {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .SideNav a 
+  {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .SideNav a:hover 
+  {
+    color: #f1f1f1;
+  }
+  
+  .SideNav .closebtn
+   {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  #main 
+  {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  @media screen and (max-height: 450px) 
+  {
+    .SideNav {padding-top: 15px;}
+    .SideNav a {font-size: 18px;}
+  }
+</style>
+
+<body>	
+<!--  pink header  -->
+<nav>
+    <div class="nav-wrapper">
+    <a class= "brand-logo center">Scheduler</a>
+    </div>
+</nav>
+<!-- sidebar nav components  -->
+<div id="SideBarNav" class="SideNav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
+    <a href="../mainWindow.html">Main</a>
+    <a href="../time-todo/renderer/index.html">Time Sorter </a>
+    <a href="../Schedule.html">Schedule Adjustments</a>
+    <a href="./Calendar.html">Full Scheduling Calendar</a>
+</div> 
+<div id="scheduler"></div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+</div>
+<div id="calendar" style="position: absolute; width: 100%; height: 100%;"></div>
+
+
+<!-- side bar navigation  -->
+<script>
+    function openNav() 
+    {
+    document.getElementById("SideBarNav").style.width = "250px";
+    document.getElementById("scheduler").style.marginLeft = "250px";
+    }
+    function closeNav() 
+    {
+    document.getElementById("SideBarNav").style.width = "0";
+    document.getElementById("scheduler").style.marginLeft= "0";
+    }
+  </script>			
+<script src="MindFusion.Scheduling.js" type="text/javascript"></script>
+<script src="MyFirstSchedule.js" type="text/javascript"></script>
+</body>
+
+</html>
